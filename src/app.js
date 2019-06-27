@@ -7,16 +7,18 @@ export class App {
     let self = this;
 
     $('.load-username').on('click', e => {
-      let userName = $('.username.input').val();
+      if (this.isInputValid()) {
+        let userName = $('.username.input').val();
 
-      fetch(`https://api.github.com/users/${userName}`)
-        .then(response => {
-         response.json()
-         .then(body => {
-           self.profile = body;
-           self.update_profile();
-         })
-        })
+        fetch(`https://api.github.com/users/${userName}`)
+          .then(response => {
+          response.json()
+          .then(body => {
+            self.profile = body;
+            self.update_profile();
+          })
+          })
+      }
     })
 
   }
@@ -26,5 +28,11 @@ export class App {
     $('#profile-image').attr('src', this.profile.avatar_url)
     $('#profile-url').attr('href', this.profile.html_url).text(this.profile.login)
     $('#profile-bio').text(this.profile.bio || '(no information)')
+  }
+
+  isInputValid() {
+    const value = $('.username.input').val();
+    const regex = /[a-z0-9_-]+/;
+    return regex.test(value);
   }
 }
