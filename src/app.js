@@ -6,16 +6,17 @@ export class App {
   initializeApp() {
     let self = this;
 
-    $('.load-username').on('click', function (e) {
+    $('.load-username').on('click', e => {
       let userName = $('.username.input').val();
 
-      fetch('https://api.github.com/users/' + userName)
-        .then((response)=> {response.json})
-        .then(function (body) {
-          self.profile = body;
-          self.update_profile();
+      fetch(`https://api.github.com/users/${userName}`)
+        .then(response => {
+         response.json()
+         .then(body => {
+           self.profile = body;
+           self.update_profile();
+         })
         })
-
     })
 
   }

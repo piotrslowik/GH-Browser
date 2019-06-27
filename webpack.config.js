@@ -87,7 +87,7 @@ const config = {
     compress: true,
     port: 2000,
     stats: 'errors-only',
-    open: true
+    open: true,
   },
 
   devtool: 'inline-source-map'
