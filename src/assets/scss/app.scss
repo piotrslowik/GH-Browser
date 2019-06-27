@@ -4,10 +4,20 @@
 .navbar {
   border-bottom: 1px solid #eee;
   margin-bottom: 8px;
-}
+} 
 
-.gh-username img{
-  width: 32px;
+.content {
+  display: flex;
+  align-items: center;
+}
+.content img {
+  width: 44px;
+  height: 42px;
+  margin-right: 10px;
+}
+.content__text {
+  display: flex;
+  flex-direction: column;
 }
 
 #profile-bio{
