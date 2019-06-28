@@ -2,7 +2,9 @@ const path = require('path'),
   webpack = require('webpack'),
   CleanWebpackPlugin = require('clean-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin');
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
+  TerserJSPlugin = require('terser-webpack-plugin'),
+  OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const extractPlugin = new ExtractTextPlugin({filename: './assets/css/app.css'});
 
@@ -81,6 +83,10 @@ const config = {
     new HtmlWebpackPlugin({template: 'index.html'}),
     extractPlugin
   ],
+
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+  },
 
   devServer: {
     contentBase: path.resolve(__dirname, "./dist/assets/media"),
