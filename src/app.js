@@ -22,7 +22,7 @@ export class App {
       response.json()
       .then(body => {
         this.profile = body;
-        this.update_profile();
+        this.updateProfile();
       })
     })
     .then(() => {
@@ -45,7 +45,7 @@ export class App {
     })
   }
 
-  update_profile() {
+  updateProfile() {
     $('#profile-name').text($('.username.input').val())
     $('#profile-image').attr('src', this.profile.avatar_url)
     $('#profile-url').attr('href', this.profile.html_url).text(`@${this.profile.login}`)
