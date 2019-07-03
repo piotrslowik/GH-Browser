@@ -2,7 +2,8 @@ const path = require('path'),
   webpack = require('webpack'),
   CleanWebpackPlugin = require('clean-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin');
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
+  UglifyJsPlugin = require('uglifyjs-3-webpack-plugin');
 
 const extractPlugin = new ExtractTextPlugin({filename: './assets/css/app.css'});
 
@@ -79,7 +80,12 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({template: 'index.html'}),
-    extractPlugin
+    extractPlugin,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+    }),
+    new UglifyJsPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
 
   devServer: {
