@@ -28,6 +28,27 @@
   margin-top:10px;
 }
 
+.profile-container {
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 30%;
+  }
+}
+.events-container {
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 70%;
+  }
+}
+
+.column {
+  flex-basis: unset;
+}
+
 .timeline .timeline-item {
   padding-bottom:1em;
 }
